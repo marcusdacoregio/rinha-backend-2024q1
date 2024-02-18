@@ -4,14 +4,18 @@ server:
 spring:
   cloud:
     gateway:
-      routes:
-        - id: api
-          uri: lb://api-service
-          predicates:
-          - Path=/**
+      mvc:
+        routes:
+          - id: api
+            uri: lb://api-service
+            predicates:
+            - Path=/**
     loadbalancer:
       eager-load:
         clients: api-service
+  threads:
+    virtual:
+      enabled: true
 
 gateway:
   api-uris: http://localhost:8080,http://localhost:8081

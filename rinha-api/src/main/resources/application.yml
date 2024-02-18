@@ -1,0 +1,11 @@
+spring:
+  threads:
+    virtual:
+      enabled: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    deserialization:
+      accept-float-as-int: false
+  mvc:
+    problemdetails:
+      enabled: true

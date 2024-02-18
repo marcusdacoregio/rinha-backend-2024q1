@@ -1,0 +1,17 @@
+server:
+  port: 9999
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api
+          uri: lb://api-service
+          predicates:
+          - Path=/**
+    loadbalancer:
+      eager-load:
+        clients: api-service
+
+gateway:
+  api-uris: http://localhost:8080,http://localhost:8081
